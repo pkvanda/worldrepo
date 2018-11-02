@@ -1,0 +1,40 @@
+- hosts:
+    - all
+  tasks:
+    - action: ping
+
+- hosts: remotenode
+  tasks:
+      - name: Create file
+        file:
+            path: /tmp/yallo
+            state: touch
+
+- hosts: remotenode
+  sudo: yes
+  tasks:
+      - name: Create user
+        user:
+            name: mario
+            shell: /bin/zsh
+ 
+      - name: Install tree
+        yum:
+            name: tree
+            state: latest
+
+
+- name: Install httpd
+  hosts: remotenode
+  become: true
+
+  tasks:
+  - name: Install httpd
+    yum:
+      name: httpd
+      state: present
+
+  - name: Start httpd
+    service:
+      name: httpd
+      state: started

@@ -1,0 +1,12 @@
+- hosts: all
+  sudo: yes
+  tasks:
+      - name: Create user
+        user:
+            name: mario
+            shell: /bin/zsh
+ 
+      - name: Install tree
+        yum:
+            name: tree
+            state: latest
