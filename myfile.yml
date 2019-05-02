@@ -3,14 +3,14 @@
   tasks:
     - action: ping
 
-- hosts: remotenode
+- hosts: all
   tasks:
       - name: Create file
         file:
             path: /tmp/yallo
             state: touch
 
-- hosts: remotenode
+- hosts: all
   sudo: yes
   tasks:
       - name: Create user
