@@ -1,3 +1,5 @@
 - hosts: all
   tasks:
     - ping:
+  tasks:
+    - action: ping
